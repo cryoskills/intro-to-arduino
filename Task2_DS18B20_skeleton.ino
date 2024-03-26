@@ -9,10 +9,10 @@ Skeleton Code */
 DS18B20 ds(5); // DS18B20 is connected to pin 5 (D5)
 
 // initialise variables:
-float ds_temp; // DS probe temperature measurement, value is a float
+float digital_temp; // DS probe temperature measurement, value is a float
 
 // initialise functions:
-float get_ds_temp();   // fucntion to get a digital temperature, return it as a float
+float get_ds18b20_temperature();   // fucntion to get a digital temperature, return it as a float
 
 void setup() {
   Serial.begin(9600); // sets baud rate (serial communication at 9600 bits of data per second)

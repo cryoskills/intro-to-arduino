@@ -7,7 +7,7 @@ Extension Complete Code */
 #include <cryo_adc.h>
 
 // initialise variables that we'll use later
-float adc_reading; // raw reading from the analog probe   
+float adc_reading; // raw reading from the analogye probe   
 float adc_voltage; // reading converted to voltage  
 float adc_resistance; // voltage converted to resistanace 
 float adc_temp;    // resistance converted to temp
@@ -15,8 +15,8 @@ float V_1; // voltage on one side of the wheatstone bridge
 float V_2; // voltage on the other side of the wheatstone bridge
 
 // initialise parameters we already know:
-float R_1 = 2970;  // measured R1 resistance
-float R_2 = 2960;  // measured R2 resistance
+float R_1 = 3270;  // measured R1 resistance
+float R_2 = 3260;  // measured R2 resistance
 float R_3 = 995;   // measured R3 resistance
 float V_in = 3.3;  // input voltage
 

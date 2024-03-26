@@ -7,10 +7,10 @@ const int ResistorPin = 11; // R1 is connected to D11
 const int PT1000Pin = A1; // PT1000 is connected to A1
 // R1 is a fixed resistor equal to ... Ohms
 
-float RTD_ADC; // Raw reading from the analogue probe
-float RTD_Voltage; // ADC reading converted to voltage
-float RTD_Resistance; // Voltage converted to resistance
-float RTD_Temp; // Resistance converted to temperature
+float analogue_ADC; // Raw ADC reading from the analogue probe
+float analogue_voltage; // Volatge of analogue probe (converted from raw ADC reading)
+float analogue_res; // Resistance (converted from voltage)
+float analogue_temp; // Temperature (converted from resistance)
 
 void setup() {
   // Sets the resistor as an output
@@ -21,15 +21,15 @@ void setup() {
 void loop() {
   // Sets the resistor to high
 
-  // Reads the ADC measurement of the PT1000
+  // Reads the ADC measurement of the PT1000 analogue sensor
   // Prints the ADC measurement to the serial monitor 
 
   // Calculation to convert ADC reading to voltage
-  // Prints the RTD voltage
+  // Prints the analogue voltage
 
-  // Calculates the RTD resistance
-  // Calculates the correpsonding RTD temperature
-  // Prints the RTD temperature
+  // Calculates the analogue resistance
+  // Calculates the correpsonding analogue temperature
+  // Prints the analogue temperature
 
   // Sets the resistor to low
 

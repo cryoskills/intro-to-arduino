@@ -6,7 +6,7 @@ Extension Skeleton Code */
 #include "Arduino.h" 
 
 // initialise variables that we'll use later
-float adc_reading; // raw reading from the analog probe   
+float adc_reading; // raw reading from the analogue probe   
 float adc_voltage; // reading converted to voltage  
 float adc_resistance; // voltage converted to resistanace 
 float adc_temp;    // resistance converted to temp

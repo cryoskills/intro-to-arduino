@@ -5,12 +5,12 @@ Complete Code */
 // initialise constants and variables:
 const int ResistorPin = 11; // R1 is connected to D11
 const int PT1000Pin = A1; // PT1000 is connected to A1
-const int R1 = 3300; // R1 is a fixed resistor equal to 3300 Ohms
+const int R1 = 3300; // R1 is a fixed resistor equal to 3300 Ohms - you may have selected a different resistor which is okay
 
-float RTD_ADC; // Raw ADC reading from the analogue probe
-float RTD_Voltage; // ADC reading converted to voltage
-float RTD_Resistance; // Voltage converted to resistance
-float RTD_Temp; // Resistance converted to temperature
+float analogue_ADC; // Raw ADC reading from the analogue probe
+float analogue_voltage; // Volatge of analogue probe (converted from raw ADC reading)
+float analogue_res; // Resistance (converted from voltage)
+float analogue_temp; // Temperature (converted from resistance)
 
 void setup() {
   pinMode(ResistorPin, OUTPUT); // Sets the resistor as an output
@@ -21,19 +21,19 @@ void setup() {
 void loop() {
   digitalWrite(ResistorPin, HIGH); // Set the resistor to high
 
-  RTD_ADC = analogRead(PT1000Pin); // Read the ADC measurement of the PT1000
+  analogue_ADC = analogRead(PT1000Pin); // Read the ADC measurement of the PT1000 analogue sensor
   Serial.print("ADC: ");
-  Serial.println(RTD_ADC); // Prints the ADC measurement to the serial monitor 
+  Serial.println(analogue_ADC); // Prints the ADC measurement to the serial monitor 
 
-  RTD_Voltage = RTD_ADC * (3.3 / 1023.0); // Calculation to convert ADC to voltage
+  analogue_voltage = analogue_ADC * (3.3 / 1023.0); // Calculation to convert ADC to voltage
   Serial.print("Voltage: ");
-  Serial.println(RTD_Voltage); // Prints the RTD voltage
+  Serial.println(analogue_voltage); // Prints the analogue voltage
 
-  RTD_Resistance = (RTD_Voltage/(3.3 - RTD_Voltage)) * R1; // Calculates the RTD resistance
-  RTD_Temp = (RTD_Resistance - 1000) / 3.986; // Calculates the correpsonding RTD temperature
+  analogue_res = (analogue_voltage/(3.3 - analogue_voltage)) * R1; // Calculates the analogue resistance
+  analogue_temp = (analogue_res - 1000) / 3.986; // Calculates the correpsonding analogue temperature
 
   Serial.print("Temperature: ");
-  Serial.println(RTD_Temp); // Prints the RTD temperature
+  Serial.println(analogue_temp); // Prints the analogue temperature
 
   digitalWrite(ResistorPin, LOW); // Set the resistor to low
 
