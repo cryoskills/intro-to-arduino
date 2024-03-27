@@ -1,3 +1,4 @@
+
 /* Cryoskills Introduction to Arduino
 Task 4 - Saving digital and analogue temperature measurements to an SD card
 Complete Code */
@@ -41,17 +42,19 @@ float get_pt1000_temperature(); // function to get a analogue temperature, retur
 void setup() {
   Serial.begin(9600); // open serial connection
   setup_sd(); // Sets up SD card
-  cryo_configure_clock(); // Configures the RTC
+  cryo_configure_clock(__DATE__,__TIME__); // Configures the RTC
   pinMode(ResistorPin, OUTPUT); // Sets the resistor as an output
   pinMode(PT1000Pin, INPUT); // Sets the PT1000 as an input
 }
 
 // Main loop (runs repeatedly):
 void loop() {
-  write_to_sd();
   // call temperature functions (Task 4.3 and 4.4):
   digital_temp = get_ds18b20_temperature(); // Digital temperature from the function below
   analogue_temp = get_pt1000_temperature(); // Analogue temperature from the function below
+
+  write_to_sd(); 
+  delay(1000); // Delay to make sure everything goes smoothly
 }
 
 // Get digital temperature function (Task 4.3):
@@ -139,7 +142,4 @@ void write_to_sd() {
 
   logfile.flush();
   digitalWrite(8, LOW);
-
-  // Delay to make sure everything goes smoothly:
-  delay(1000);
 }

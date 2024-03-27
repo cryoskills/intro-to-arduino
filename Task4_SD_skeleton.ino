@@ -3,7 +3,12 @@ Task 4 - Saving digital and analogue temperature measurements to an SD card
 Skeleton Code */
 
 // Add libraries (SD card, temperature sensors, cryo):
-
+#include <SD.h>
+#include <SPI.h> 
+#include <DS18B20.h>  // open-source library for using the DS temperature sensor: https://github.com/matmunk/DS18B20
+#include <OneWire.h>
+#include <cryo_sleep.h>
+#include <cryo_adc.h>
 
 
 // Initialise variables:
@@ -34,18 +39,17 @@ float get_pt1000_temperature(); // function to get a analogue temperature, retur
 void setup() {
   Serial.begin(9600); // Open serial connection
   setup_sd(); // Sets up SD card
-  cryo_configure_clock(); // Configures the RTC
+  cryo_configure_clock(__DATE__,__TIME__); // Configures the RTC
 
 
 }
 
 // Main loop (runs repeatedly):
 void loop() {
-  write_to_sd();
   // call temperature functions (Task 4.3 and 4.4):
 
-
-
+  write_to_sd();
+  delay(1000); // delay to make sure everything goes smoothly
 }
 
 // Get digital temperature function (Task 4.3):
@@ -107,7 +111,4 @@ void write_to_sd() {
 
   logfile.flush();
   digitalWrite(8, LOW);
-
-  // delay to make sure everything goes smoothly
-  delay(1000);
 }
