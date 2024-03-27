@@ -71,6 +71,7 @@ float get_ds18b20_temperature() {
 // Get analogue temperature function (Task 4.4):
 float get_pt1000_temperature(){
   digitalWrite(ResistorPin, HIGH); // Set the resistor to high
+  delay(500);
 
   analogue_ADC = analogRead(PT1000Pin); // Read the ADC measurement of the PT1000
   analogue_voltage = analogue_ADC * (3.3 / 1023.0); // Calculation to convert ADC to voltage
