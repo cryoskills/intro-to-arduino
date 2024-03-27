@@ -20,6 +20,7 @@ void setup() {
 
 void loop() {
   digitalWrite(ResistorPin, HIGH); // Set the resistor to high
+  delay(500);
 
   analogue_ADC = analogRead(PT1000Pin); // Read the ADC measurement of the PT1000 analogue sensor
   Serial.print("ADC: ");
