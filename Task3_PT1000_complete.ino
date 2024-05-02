@@ -7,10 +7,10 @@ const int ResistorPin = 11; // R1 is connected to D11
 const int PT1000Pin = A1; // PT1000 is connected to A1
 const int R1 = 3300; // R1 is a fixed resistor equal to 3300 Ohms - you may have selected a different resistor which is okay
 
-float analogue_ADC; // Raw ADC reading from the analogue probe
-float analogue_voltage; // Volatge of analogue probe (converted from raw ADC reading)
-float analogue_res; // Resistance (converted from voltage)
-float analogue_temp; // Temperature (converted from resistance)
+float PT1000_ADC; // Raw ADC reading from the analogue probe
+float PT1000_voltage; // Volatge of analogue probe (converted from raw ADC reading)
+float PT1000_res; // Resistance (converted from voltage)
+float PT1000_temp; // Temperature (converted from resistance)
 
 void setup() {
   pinMode(ResistorPin, OUTPUT); // Sets the resistor as an output
@@ -22,19 +22,19 @@ void loop() {
   digitalWrite(ResistorPin, HIGH); // Set the resistor to high
   delay(500);
 
-  analogue_ADC = analogRead(PT1000Pin); // Read the ADC measurement of the PT1000 analogue sensor
+  PT1000_ADC = analogRead(PT1000Pin); // Read the ADC measurement of the PT1000 analogue sensor
   Serial.print("ADC: ");
-  Serial.println(analogue_ADC); // Prints the ADC measurement to the serial monitor 
+  Serial.println(PT1000_ADC); // Prints the ADC measurement to the serial monitor 
 
-  analogue_voltage = analogue_ADC * (3.3 / 1023.0); // Calculation to convert ADC to voltage
+  PT1000_voltage = PT1000_ADC * (3.3 / 1023.0); // Calculation to convert ADC to voltage
   Serial.print("Voltage: ");
-  Serial.println(analogue_voltage); // Prints the analogue voltage
+  Serial.println(PT1000_voltage); // Prints the analogue voltage
 
-  analogue_res = (analogue_voltage/(3.3 - analogue_voltage)) * R1; // Calculates the analogue resistance
-  analogue_temp = (analogue_res - 1000) / 3.986; // Calculates the correpsonding analogue temperature
+  PT1000_res = (PT1000_voltage/(3.3 - PT1000_voltage)) * R1; // Calculates the analogue resistance
+  PT1000_temp = (PT1000_res - 1000) / 3.986; // Calculates the correpsonding analogue temperature
 
   Serial.print("Temperature: ");
-  Serial.println(analogue_temp); // Prints the analogue temperature
+  Serial.println(PT1000_temp); // Prints the analogue temperature
 
   digitalWrite(ResistorPin, LOW); // Set the resistor to low
 
