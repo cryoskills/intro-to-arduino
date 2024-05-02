@@ -7,10 +7,10 @@ const int ResistorPin = 11; // R1 is connected to D11
 const int PT1000Pin = A1; // PT1000 is connected to A1
 // R1 is a fixed resistor equal to ... Ohms
 
-float analogue_ADC; // Raw ADC reading from the analogue probe
-float analogue_voltage; // Volatge of analogue probe (converted from raw ADC reading)
-float analogue_res; // Resistance (converted from voltage)
-float analogue_temp; // Temperature (converted from resistance)
+float PT1000_ADC; // Raw ADC reading from the analogue probe
+float PT1000_voltage; // Volatge of analogue probe (converted from raw ADC reading)
+float PT1000_res; // Resistance (converted from voltage)
+float PT1000_temp; // Temperature (converted from resistance)
 
 void setup() {
   // Sets the resistor as an output
